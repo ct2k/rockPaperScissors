@@ -22,26 +22,54 @@ function computerPlay() {
 
 // Task 2
 
-let playerSelection = 'Rock';
-let lowerCasesRock = 'Rock'.toLowerCase();
+let playerSelection = '';
+// let lowerCasesRock = 'Rock'.toLowerCase();
+// Above code is not working as intended.
 const computerSelection = computerPlay();
 
 
 function roundOne(playerSelection, computerSelection) {
+  
+  
         
-    if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-        alert('computer wins!');
-        }    
+    
+    playerSelection = prompt('Rock, Paper, or Scissors?');
 
+    if (playerSelection = 'Rock' || 'Paper' || 'Scissors') {
+        playerSelection.toLocaleLowerCase();
+    }
+
+    
+    if (playerSelection === 'Rock' && computerSelection === 'Paper') {
+        return roundOne(console.log('computer wins!'));
+        }   else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+            return roundOne(console.log('player wins!'));                
+        }   else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
+            return roundOne(console.log('computer wins'));
+        }   else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+            return roundOne(console.log('player wins'));
+        }   else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
+            return roundOne(console.log('player wins'));
+        }
+        
 }
+
 
 // Task 3
 
 function game() {
     roundOne(playerSelection, computerSelection);
+    if (playerSelection = 'players win') {
+        return(console.log('one point for player'));
+    } else if ('computer wins') {
+        return(console.log('one point for the computer'));
+    }
+    return roundOne();
 }
 
 
+
+// return roundOne(playerSelection, computerSelection);
 // Unused code
 
 // return alert('Computer scored a point!');
