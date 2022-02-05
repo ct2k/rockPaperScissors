@@ -4,7 +4,7 @@
 // Changed code during Task 2. Wasn't giving a random number anymore.
 
 const myArray = ['Rock', 'Paper', 'Scissors'];
-const computerSelection = computerPlay();
+
 
 function computerPlay() {
     return myArray[Math.floor(Math.random() * myArray.length)];
@@ -22,50 +22,66 @@ function computerPlay() {
 // }
 
 // Task 2
-// Lowercase function
+// Lowercase function working
+// Previous 'roundOne' function integrated to 'playerPlay'
+// const computerSelection moved out of global scope into function
 
-function playerPlay() {
-    let playerSelection = prompt('enter value').toLocaleLowerCase();
-    if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
-        return playerSelection;
+function playerPlay(playerSelection, computerSelection) {
+    computerSelection = computerPlay();
+    playerSelection = prompt('enter value').toLocaleLowerCase();
+    if (playerSelection === 'rock' && computerSelection === 'Paper') {
+        console.log('Paper beats Rock. Computer wins!');
+    } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
+        return (console.log('Rock beats Scissors. Player wins!'));
+    } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
+        return (console.log('Scissors beat Paper. Computer wins!'));
+    } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
+        return (console.log('Paper beats Rock. Player wins!'));
+    } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
+        return (console.log('Scissors beat Paper. Player Wins!'));
+    } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
+        return (console.log('Rock beats Scissors. Computer wins!'));
     } else {
         (playerSelection === '')
-        console.log('you didn\'t enter Rock, Paper, or Scissors');
+        console.log('You didn\'t enter Rock, Paper, or Scissors!');
     }
 
 }
 
 // Play a game function
 
-function roundOne(playerSelection, computerSelection) {
-    playerSelection = prompt('Rock, Paper, or Scissors?');
-    
-    if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-        return roundOne(console.log('computer wins!'));
-    } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        return roundOne(console.log('player wins!'));
-    } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-        return roundOne(console.log('computer wins'));
-    } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-        return roundOne(console.log('player wins'));
-    } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
-        return roundOne(console.log('player wins'));
-    }
+// function roundOne(playerSelection, computerSelection) {
+        
 
-}
+//     if (playerSelection === 'rock' && computerSelection === 'paper') {
+//         return (console.log('computer wins!'));
+
+    
+// }
+
+// playerSelection = prompt('enter value').toLocaleLowerCase();
+// if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
+//     return playerSelection;
+// } else {
+//     (playerSelection === '')
+//     console.log('you didn\'t enter Rock, Paper, or Scissors');
+// }
+
+// }
+
 
 
 // Task 3
 
-function game() {
-    roundOne(playerSelection, computerSelection);
-    if (playerSelection = 'players win') {
-        return (console.log('one point for player'));
-    } else if ('computer wins') {
-        return (console.log('one point for the computer'));
-    }
-    return roundOne();
-}
+// function game() {
+//     roundOne(playerSelection, computerSelection);
+//     if (playerSelection = 'players win') {
+//         return (console.log('one point for player'));
+//     } else if ('computer wins') {
+//         return (console.log('one point for the computer'));
+//     }
+//     return roundOne();
+// }
 
 
 
@@ -85,3 +101,4 @@ function game() {
 // }
 
 // }
+
