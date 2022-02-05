@@ -21,11 +21,30 @@ function computerPlay() {
 // }
 
 // Task 2
-
-let playerSelection = '';
+// let playerSelection = '';
+// let playerSelection = '';
 // let lowerCasesRock = 'Rock'.toLowerCase();
 // Above code is not working as intended.
 const computerSelection = computerPlay();
+
+function playerPlay(playerSelection) {
+    playerSelection = '';
+    playerSelection = prompt('enter value');
+    if (playerSelection === 'RoCk' || playerSelection === 'PAPer' ||  playerSelection === 'SciSsOrS' && playerSelection === myArray) {
+        
+    
+    }  else if (playerSelection !== 'Rock', 'Paper', 'Scissors') {
+            console.log('you didn\'t enter rock paper or scissors');
+    } else {
+
+    } return playerSelection.toLocaleLowerCase();    
+}   
+    
+    
+
+ 
+    
+
 
 
 function roundOne(playerSelection, computerSelection) {
@@ -35,9 +54,7 @@ function roundOne(playerSelection, computerSelection) {
     
     playerSelection = prompt('Rock, Paper, or Scissors?');
 
-    if (playerSelection = 'Rock' || 'Paper' || 'Scissors') {
-        playerSelection.toLocaleLowerCase();
-    }
+
 
     
     if (playerSelection === 'Rock' && computerSelection === 'Paper') {
