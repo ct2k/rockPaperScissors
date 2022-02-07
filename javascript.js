@@ -5,6 +5,7 @@
 
 const myArray = ['Rock', 'Paper', 'Scissors'];
 
+
 function computerPlay() {
     return myArray[Math.floor(Math.random() * myArray.length)];
 
@@ -27,20 +28,27 @@ function computerPlay() {
 // console.log removed
 
 function playerPlay(playerSelection, computerSelection) {
+
     computerSelection = computerPlay();
     playerSelection = prompt('enter value').toLocaleLowerCase();
     if (playerSelection === 'rock' && computerSelection === 'Paper') {
-        return ('Paper beats Rock. Computer wins!');
+        return (roundWinner = 'Paper beats Rock. Computer wins!');
     } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
-        return ('Rock beats Scissors. Player wins!');
+        return (roundWinner = 'Rock beats Scissors. Player wins!');
     } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
-        return ('Scissors beat Paper. Computer wins!');
+        return (roundWinner = 'Scissors beat Paper. Computer wins!');
     } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
-        return ('Paper beats Rock. Player wins!');
+        return (roundWinner = 'Paper beats Rock. Player wins!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
-        return ('Scissors beat Paper. Player Wins!');
+        return (roundWinner = 'Scissors beat Paper. Player Wins!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
-        return ('Rock beats Scissors. Computer wins!');
+        return (roundWinner = 'Rock beats Scissors. Computer wins!');
+    } else if (playerSelection === 'rock' && computerSelection === 'Rock') {
+        return (tieGame = 'Rock = Rock. Tie game!');
+    } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
+        return (tieGame = 'Scissors = Scissors. Tie game!');
+    } else if (playerSelection === 'paper' && computerSelection === 'Paper') {
+        return (tieGame = 'Paper = Paper. Tie game!');
     } else {
         (playerSelection === '')
         console.log('You didn\'t enter Rock, Paper, or Scissors!');
@@ -50,13 +58,42 @@ function playerPlay(playerSelection, computerSelection) {
 
 // Task 3
 
+
 function game() {
-   console.log(playerPlay());
-   console.log(playerPlay());
-   console.log(playerPlay());
-   console.log(playerPlay());
-   console.log(playerPlay());
+    
+let score = 0;
+let roundWinner;
+let tieGame;
+let playerSelection;
+let computerSelection;
+
+if (playerSelection === roundWinner || computerSelection === roundWinner) {
+    score++;
+    if (score === 5) {
+        alert('You win the game!')
+    }
+} else {
+    score === tieGame;
 }
+
+console.log(playerPlay());
+console.log(score);
+console.log(playerPlay());
+console.log(score);
+console.log(playerPlay());
+console.log(score);
+console.log(playerPlay());
+console.log(score);
+console.log(playerPlay());
+console.log(score);
+
+}
+
+    // if (score === 5) {
+    //     console.log('You win the game!');
+    //     }
+
+
 
 
 
