@@ -27,50 +27,52 @@ function computerPlay() {
 // const computerSelection moved out of global scope into function
 // console.log removed
 
-function game() {
+function playerPlay(playerSelection, computerSelection) {
 
-    let score = 0;
-    let roundWinner;
-    let tieGame;
-    if (playerSelection === roundWinner) {
-        console.log(score = score++);
+    computerSelection = computerPlay();
+    playerSelection = prompt('enter value').toLocaleLowerCase();
+    if (playerSelection === 'rock' && computerSelection === 'Paper') {
+        return (roundWinner = 'Paper beats Rock. Computer wins!');
+    } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
+        return (roundWinner = 'Rock beats Scissors. Player wins!');
+    } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
+        return (roundWinner = 'Scissors beat Paper. Computer wins!');
+    } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
+        return (roundWinner = 'Paper beats Rock. Player wins!');
+    } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
+        return (roundWinner = 'Scissors beat Paper. Player Wins!');
+    } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
+        return (roundWinner = 'Rock beats Scissors. Computer wins!');
+    } else if (playerSelection === 'rock' && computerSelection === 'Rock') {
+        return (tieGame = 'Rock = Rock. Tie game!');
+    } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
+        return (tieGame = 'Scissors = Scissors. Tie game!');
+    } else if (playerSelection === 'paper' && computerSelection === 'Paper') {
+        return (tieGame = 'Paper = Paper. Tie game!');
+    } else {
+        (playerSelection === '')
+        console.log('You didn\'t enter Rock, Paper, or Scissors!');
     }
 
-
-    function playerPlay(playerSelection, computerSelection) {
-
-        computerSelection = computerPlay();
-        playerSelection = prompt('enter value').toLocaleLowerCase();
-        if (playerSelection === 'rock' && computerSelection === 'Paper') {
-            return (roundWinner = 'Paper beats Rock. Computer wins!');
-        } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
-            return (roundWinner = 'Rock beats Scissors. Player wins!');
-        } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
-            return (roundWinner = 'Scissors beat Paper. Computer wins!');
-        } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
-            return (roundWinner = 'Paper beats Rock. Player wins!');
-        } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
-            return (roundWinner = 'Scissors beat Paper. Player Wins!');
-        } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
-            return (roundWinner = 'Rock beats Scissors. Computer wins!');
-        } else if (playerSelection === 'rock' && computerSelection === 'Rock') {
-            return (tieGame = 'Rock = Rock. Tie game!');
-        } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
-            return (tieGame = 'Scissors = Scissors. Tie game!');
-        } else if (playerSelection === 'paper' && computerSelection === 'Paper') {
-            return (tieGame = 'Paper = Paper. Tie game!');
-        } else {
-            (playerSelection === '')
-            console.log('You didn\'t enter Rock, Paper, or Scissors!');
-        }
-
-    }
 }
 
 
 // Task 3
 
+function game() {
 
+    let score = 0;
+    score++;
+    
+
+ console.log(playerPlay(score));
+ console.log(playerPlay(score));
+ console.log(playerPlay(score));
+ console.log(playerPlay(score));
+ console.log(playerPlay(score));
+
+}
+    
 
 
 
