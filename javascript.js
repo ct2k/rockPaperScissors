@@ -4,6 +4,8 @@
 // Changed code during Task 2. Wasn't giving a random number anymore.
 
 const myArray = ['Rock', 'Paper', 'Scissors'];
+let score = 0;
+
 
 
 function computerPlay() {
@@ -26,11 +28,15 @@ function computerPlay() {
 // Previous 'roundOne' function integrated to 'playerPlay'
 // const computerSelection moved out of global scope into function
 // console.log removed
+// playerPlay renamed to playRound
 
-function playerPlay(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
 
+    let roundWinner = score++;
+    let tieGame = '';
     computerSelection = computerPlay();
-    playerSelection = prompt('enter value').toLocaleLowerCase();
+    playerSelection = prompt('Rock, Paper, or Scissors?').toLocaleLowerCase();
+
     if (playerSelection === 'rock' && computerSelection === 'Paper') {
         return (roundWinner = 'Paper beats Rock. Computer wins!');
     } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
@@ -42,13 +48,13 @@ function playerPlay(playerSelection, computerSelection) {
     } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
         return (roundWinner = 'Scissors beat Paper. Player Wins!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
-        return (roundWinner = 'Rock beats Scissors. Computer wins!');
+        return (roundWinner === 'Rock beats Scissors. Computer wins!');
     } else if (playerSelection === 'rock' && computerSelection === 'Rock') {
         return (tieGame = 'Rock = Rock. Tie game!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
         return (tieGame = 'Scissors = Scissors. Tie game!');
     } else if (playerSelection === 'paper' && computerSelection === 'Paper') {
-        return (tieGame = 'Paper = Paper. Tie game!');
+        return (tieGame === 'Paper = Paper. Tie game!');
     } else {
         (playerSelection === '')
         console.log('You didn\'t enter Rock, Paper, or Scissors!');
@@ -56,42 +62,26 @@ function playerPlay(playerSelection, computerSelection) {
 
 }
 
-
 // Task 3
+// Score is added up, but the winner is not defined.
 
 function game() {
 
-    let score = 0;
-    score++;
-    
+    console.log(playRound());
+    console.log(score);
+    console.log(playRound());
+    console.log(score);
+    console.log(playRound());
+    console.log(score);
+    console.log(playRound());
+    console.log(score);
+    console.log(playRound());
+    console.log(score);
 
- console.log(playerPlay(score));
- console.log(playerPlay(score));
- console.log(playerPlay(score));
- console.log(playerPlay(score));
- console.log(playerPlay(score));
+    if (score >= 5) {
+        console.log('You win the game!');
+    }
 
 }
-    
 
-
-
-
-
-// return roundOne(playerSelection, computerSelection);
-// Unused code
-
-// return alert('Computer scored a point!');
-// } else if (computerSelection === 'Scissors' && playerSelection === 'Paper') {
-//     return alert('Computer scored a point')
-// }   else if (computerSelection === 'Paper' && playerSelection === 'Rock') {
-//     return alert('Computer scored a point!')
-// }
-
-
-// else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-//     alert('computer wins');
-// }
-
-// }
-
+game();
