@@ -80,7 +80,8 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
         return (roundWinner = 'Scissors beat Paper. Player Wins!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
-        return (roundWinner === 'Rock beats Scissors. Computer wins!');
+        // eslint-disable-next-line no-unused-vars
+        return (roundWinner = 'Rock beats Scissors. Computer wins!');
     } else if (playerSelection === 'rock' && computerSelection === 'Rock') {
         return (tieGame = 'Rock = Rock. Tie game!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
