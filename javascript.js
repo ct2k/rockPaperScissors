@@ -30,13 +30,30 @@ function computerPlay() {
 // console.log removed
 // playerPlay renamed to playRound
 
+const rockBtn = document.querySelector('#rock')
+const paperBtn = document.querySelector('#paper')
+const scissorsBtn = document.querySelector('#scissors')
+
+rockBtn.addEventListener('click', function() {
+    playRound('rock');
+    console.log(playRound('rock'))
+})
+
+paperBtn.addEventListener('click', function() {
+    console.log(playRound('paper'));
+})
+
+scissorsBtn.addEventListener('click', function() {
+    console.log(playRound('scissors'));
+})
+
 function playRound(playerSelection, computerSelection) {
 
     let roundWinner = score++;
     let tieGame = '';
     computerSelection = computerPlay();
-    playerSelection = prompt('Rock, Paper, or Scissors?').toLocaleLowerCase();
-
+    // playerSelection = prompt('Rock, Paper, or Scissors?').toLocaleLowerCase();
+    
     if (playerSelection === 'rock' && computerSelection === 'Paper') {
         return (roundWinner = 'Paper beats Rock. Computer wins!');
     } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
@@ -54,34 +71,34 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
         return (tieGame = 'Scissors = Scissors. Tie game!');
     } else if (playerSelection === 'paper' && computerSelection === 'Paper') {
-        return (tieGame === 'Paper = Paper. Tie game!');
+        // eslint-disable-next-line no-unused-vars
+        return (tieGame = 'Paper = Paper. Tie game!');
     } else {
         (playerSelection === '')
         console.log('You didn\'t enter Rock, Paper, or Scissors!');
     }
-
 }
 
 // Task 3
 // Score is added up, but the winner is not defined.
 
-function game() {
+// function game() {
 
-    console.log(playRound());
-    console.log(score);
-    console.log(playRound());
-    console.log(score);
-    console.log(playRound());
-    console.log(score);
-    console.log(playRound());
-    console.log(score);
-    console.log(playRound());
-    console.log(score);
+//     console.log(playRound());
+//     console.log(score);
+//     console.log(playRound());
+//     console.log(score);
+//     console.log(playRound());
+//     console.log(score);
+//     console.log(playRound());
+//     console.log(score);
+//     console.log(playRound());
+//     console.log(score);
 
-    if (score >= 5) {
-        console.log('You win the game!');
-    }
+//     if (score >= 5) {
+//         console.log('You win the game!');
+//     }
 
-}
+// }
 
-game();
+// game();
