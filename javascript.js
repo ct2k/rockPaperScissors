@@ -23,29 +23,44 @@ function computerPlay() {
 //     return computerPlay;
 // }
 
-// Task 2
-// Lowercase function working
-// Previous 'roundOne' function integrated to 'playerPlay'
-// const computerSelection moved out of global scope into function
-// console.log removed
-// playerPlay renamed to playRound
+
+// Game buttons
 
 const rockBtn = document.querySelector('#rock')
 const paperBtn = document.querySelector('#paper')
 const scissorsBtn = document.querySelector('#scissors')
 
 rockBtn.addEventListener('click', function() {
-    playRound('rock');
     console.log(playRound('rock'))
+    results.innerHTML += `<li> ${playRound('rock')}</li>`;
+    resultsContainer.appendChild(results)
 })
 
 paperBtn.addEventListener('click', function() {
     console.log(playRound('paper'));
+    results.innerHTML += `<li> ${playRound('paper')}</li>`
+    resultsContainer.append(results)
 })
 
 scissorsBtn.addEventListener('click', function() {
     console.log(playRound('scissors'));
+    results.innerHTML += `<li> ${playRound('scissors')}</li>`
+    resultsContainer.appendChild(results)
 })
+
+// Create the results
+
+const resultsContainer = document.querySelector('.results')
+const results = document.createElement('ul')
+results.classList.add('theresults')
+results.setAttribute('style', 'color: red; font-weight: bold; font-size: 20px')
+
+// Task 2
+// Lowercase function working
+// Previous 'roundOne' function integrated to 'playerPlay'
+// const computerSelection moved out of global scope into function
+// console.log removed
+// playerPlay renamed to playRound
 
 function playRound(playerSelection, computerSelection) {
 
