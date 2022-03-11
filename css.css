@@ -50,3 +50,11 @@ body {
     margin-top: auto;
 
 }
+
+.callback {
+    background-color: bisque;
+}
+
+.altColor {
+    background-color: blueviolet;
+}

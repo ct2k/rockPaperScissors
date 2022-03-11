@@ -4,7 +4,6 @@
 // Changed code during Task 2. Wasn't giving a random number anymore.
 
 const myArray = ['Rock', 'Paper', 'Scissors'];
-let score = 0;
 
 
 
@@ -31,19 +30,20 @@ const paperBtn = document.querySelector('#paper')
 const scissorsBtn = document.querySelector('#scissors')
 
 rockBtn.addEventListener('click', function() {
-    console.log(playRound('rock'))
+    // console.log(playRound('rock'))
     results.innerHTML += `<li> ${playRound('rock')}</li>`;
     resultsContainer.appendChild(results)
+    declareWinner()
 })
 
 paperBtn.addEventListener('click', function() {
-    console.log(playRound('paper'));
+    // console.log(playRound('paper'));
     results.innerHTML += `<li> ${playRound('paper')}</li>`
     resultsContainer.append(results)
 })
 
 scissorsBtn.addEventListener('click', function() {
-    console.log(playRound('scissors'));
+    // console.log(playRound('scissors'));
     results.innerHTML += `<li> ${playRound('scissors')}</li>`
     resultsContainer.appendChild(results)
 })
@@ -62,26 +62,33 @@ results.setAttribute('style', 'color: red; font-weight: bold; font-size: 20px')
 // console.log removed
 // playerPlay renamed to playRound
 
-function playRound(playerSelection, computerSelection) {
+let computerWins = 0;
+let playerWins = 0;
 
-    let roundWinner = score++;
+
+
+function playRound(playerSelection) {
+    //console.log(score)
+    // let roundWinner = score++;
+    let computerSelection = computerPlay();
     let tieGame = '';
-    computerSelection = computerPlay();
     // playerSelection = prompt('Rock, Paper, or Scissors?').toLocaleLowerCase();
     
+  
+
     if (playerSelection === 'rock' && computerSelection === 'Paper') {
-        return (roundWinner = 'Paper beats Rock. Computer wins!');
+        return ('Paper beats Rock. Computer wins! Score + ' + (++computerWins));
     } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
-        return (roundWinner = 'Rock beats Scissors. Player wins!');
+        return ('Rock beats Scissors. Player wins! Score + ' + (++playerWins));
     } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
-        return (roundWinner = 'Scissors beat Paper. Computer wins!');
+        return (computerWins = 'Scissors beat Paper. Computer wins!');
     } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
-        return (roundWinner = 'Paper beats Rock. Player wins!');
+        return (playerWins = 'Paper beats Rock. Player wins!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
-        return (roundWinner = 'Scissors beat Paper. Player Wins!');
+        return (playerWins = 'Scissors beat Paper. Player Wins!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
         // eslint-disable-next-line no-unused-vars
-        return (roundWinner = 'Rock beats Scissors. Computer wins!');
+        return (computerWins = 'Rock beats Scissors. Computer wins!');
     } else if (playerSelection === 'rock' && computerSelection === 'Rock') {
         return (tieGame = 'Rock = Rock. Tie game!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
@@ -93,10 +100,43 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === '')
         console.log('You didn\'t enter Rock, Paper, or Scissors!');
     }
+    
+    
+
 }
+
+
+
+const declareWinner = () => {
+    for (let i = 0; i < 5; i++) {
+        
+    if (playerWins === 5) {
+        results.textContent = 'Player wins the game!'
+    }   else if (computerWins === 5) {
+        results.textContent = 'Computer wins the game!'
+    }
+
+    }
+}
+
+// Calculate and log score
+
+// const alertWinner = document.createElement('p')
+// alertWinner.textContent = 'You win the game'
+
+// let score = 0;
+// function reportWinner(){ 
+//     if (score ===5) {
+//         resultsContainer.appendChild(alertWinner)
+//     }
+// }
+// reportWinner()
+
+
 
 // Task 3
 // Score is added up, but the winner is not defined.
+
 
 // function game() {
 
@@ -118,3 +158,31 @@ function playRound(playerSelection, computerSelection) {
 // }
 
 // game();
+
+
+// Callback button examples / practice
+
+// const callbackBtn = document.querySelector('.callback')
+
+// // Function declaration / named function
+
+// function colorBtn() {
+//     callbackBtn.classList.toggle('altColor')
+// }
+
+// callbackBtn.addEventListener('click', colorBtn)
+
+// // Anonymous function
+
+// callbackBtn.addEventListener('click', function() {
+//     callbackBtn.classList.toggle('altColor')
+// })
+
+// // Arrow function
+
+// callbackBtn.addEventListener('click', () => {
+//     callbackBtn.classList.toggle('altColor')
+// })
+
+// function practice
+
