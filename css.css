@@ -43,6 +43,19 @@ body {
     text-decoration: underline;
 }
 
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.score {
+    text-decoration: none;
+}
+
 #footer {
     display: flex;
     justify-content: center;

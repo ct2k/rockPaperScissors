@@ -29,24 +29,38 @@ const rockBtn = document.querySelector('#rock')
 const paperBtn = document.querySelector('#paper')
 const scissorsBtn = document.querySelector('#scissors')
 
-rockBtn.addEventListener('click', function() {
+rockBtn.addEventListener('click', choseRock)
+function choseRock() {
     // console.log(playRound('rock'))
-    results.innerHTML += `<li> ${playRound('rock')}</li>`;
+    results.innerHTML = `<li> ${playRound('rock')}</li>`; // += removed so it only shows one result
     resultsContainer.appendChild(results)
+    score.textContent = `Player score: ${playerWins} Computer score: ${computerWins}`
+    scoreContainer.appendChild(score)
+    
     declareWinner()
-})
+}
 
-paperBtn.addEventListener('click', function() {
+paperBtn.addEventListener('click', chosePaper) 
+function chosePaper() {
     // console.log(playRound('paper'));
-    results.innerHTML += `<li> ${playRound('paper')}</li>`
+    results.innerHTML = `<li> ${playRound('paper')}</li>`
     resultsContainer.append(results)
-})
+    score.textContent = `Player score: ${playerWins} Computer score: ${computerWins}`
+    scoreContainer.appendChild(score)
 
-scissorsBtn.addEventListener('click', function() {
+    declareWinner()
+}
+
+scissorsBtn.addEventListener('click', choseScissors)
+function choseScissors() {
     // console.log(playRound('scissors'));
-    results.innerHTML += `<li> ${playRound('scissors')}</li>`
+    results.innerHTML = `<li> ${playRound('scissors')}</li>`
     resultsContainer.appendChild(results)
-})
+    score.textContent = `Player score: ${playerWins} Computer score: ${computerWins}`
+    scoreContainer.appendChild(score)
+
+    declareWinner()
+}
 
 // Create the results
 
@@ -54,6 +68,7 @@ const resultsContainer = document.querySelector('.results')
 const results = document.createElement('ul')
 results.classList.add('theresults')
 results.setAttribute('style', 'color: red; font-weight: bold; font-size: 20px')
+
 
 // Task 2
 // Lowercase function working
@@ -65,6 +80,13 @@ results.setAttribute('style', 'color: red; font-weight: bold; font-size: 20px')
 let computerWins = 0;
 let playerWins = 0;
 
+// Create the score
+
+const scoreContainer = document.querySelector('.scoreboard')
+const score = document.createElement('p')
+score.classList.add('score')
+score.setAttribute('style', 'color: blue; font-weight: bold; font-size: 20px')
+
 
 
 function playRound(playerSelection) {
@@ -74,21 +96,20 @@ function playRound(playerSelection) {
     let tieGame = '';
     // playerSelection = prompt('Rock, Paper, or Scissors?').toLocaleLowerCase();
     
-  
 
     if (playerSelection === 'rock' && computerSelection === 'Paper') {
         return ('Paper beats Rock. Computer wins! Score + ' + (++computerWins));
     } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
         return ('Rock beats Scissors. Player wins! Score + ' + (++playerWins));
     } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
-        return (computerWins = 'Scissors beat Paper. Computer wins!');
+        return ('Scissors beat Paper. Computer wins! Score + ' + (++computerWins));
     } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
-        return (playerWins = 'Paper beats Rock. Player wins!');
+        return ('Paper beats Rock. Player wins! Score + ' + (++playerWins));
     } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
-        return (playerWins = 'Scissors beat Paper. Player Wins!');
+        return ('Scissors beat Paper. Player Wins! Score + ' + (++playerWins));
     } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
         // eslint-disable-next-line no-unused-vars
-        return (computerWins = 'Rock beats Scissors. Computer wins!');
+        return ('Rock beats Scissors. Computer wins! Score + ' + (++computerWins));
     } else if (playerSelection === 'rock' && computerSelection === 'Rock') {
         return (tieGame = 'Rock = Rock. Tie game!');
     } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
@@ -100,24 +121,80 @@ function playRound(playerSelection) {
         (playerSelection === '')
         console.log('You didn\'t enter Rock, Paper, or Scissors!');
     }
-    
-    
-
 }
 
-
+// Declare winner of the game
 
 const declareWinner = () => {
-    for (let i = 0; i < 5; i++) {
-        
     if (playerWins === 5) {
         results.textContent = 'Player wins the game!'
+        rockBtn.setAttribute('style', 'background-color: red; text: NULL')
+        rockBtn.removeEventListener('click', choseRock)
+        paperBtn.setAttribute('style', 'background-color: red; text: NULL')
+        paperBtn.removeEventListener('click', chosePaper)
+        scissorsBtn.setAttribute('style', 'background-color: red; text: NULL')
+        scissorsBtn.removeEventListener('click', choseScissors)
+        playerWins = 0;
+        computerWins = 0;
+        resetBtn.appendChild(playAgain)
     }   else if (computerWins === 5) {
         results.textContent = 'Computer wins the game!'
-    }
+        playerWins = 0;
+        computerWins = 0;
+        rockBtn.setAttribute('style', 'background-color: red; text: NULL')
+        rockBtn.removeEventListener('click', choseRock)
+        paperBtn.setAttribute('style', 'background-color: red; text: NULL')
+        paperBtn.removeEventListener('click', chosePaper)
+        scissorsBtn.setAttribute('style', 'background-color: red; text: NULL')
+        scissorsBtn.removeEventListener('click', choseScissors)
+        resetBtn.appendChild(playAgain)
 
-    }
+        
+    }   
 }
+
+// Play Again button
+
+const playAgain= document.createElement('button')
+playAgain.textContent = 'Play again?'
+
+
+const resetBtn = document.querySelector('#resetbutton')
+resetBtn.addEventListener('click', resetGame)
+
+function resetGame() {
+    rockBtn.addEventListener('click', choseRock)
+    rockBtn.removeAttribute('style')
+    paperBtn.addEventListener('click', chosePaper)
+    paperBtn.removeAttribute('style')
+    scissorsBtn.addEventListener('click', choseScissors)
+    scissorsBtn.removeAttribute('style')
+    score.textContent = ''
+    results.textContent = ''
+    resetBtn.removeChild(playAgain)
+}
+
+
+
+// Play 5 rounds of RPS
+
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//       console.log(playRound('rock'))
+      
+//     } 
+    
+// }
+
+// game()
+
+// game()
+
+// else if (playerWins >=5  || computerWins >= 5)
+//         results.textContent = '',
+//         playerWins = 0,
+//         computerWins = 0
+
 
 // Calculate and log score
 
