@@ -38,22 +38,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     font-size: 24px;
     font-weight: bold;
-    text-decoration: underline;
+
+}
+
+.winner {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    /* padding: 0.5rem; */
+}
+
+@keyframes blink {
+    0% {color:rebeccapurple}
+    50% {color: rgb(0, 110, 255);}
+    100% {color: rgb(189, 45, 129);}
+
+}
+
+ul {
+    padding: 0;
+
 }
 
 .scoreboard {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     font-size: 24px;
     font-weight: bold;
-    text-decoration: underline;
 }
 
-.score {
-    text-decoration: none;
+.scoreboard > .score {
+    text-decoration: revert;
+    /* padding-left: 0.5rem; */
 }
 
 #footer {
@@ -64,10 +85,23 @@ body {
 
 }
 
-.callback {
-    background-color: bisque;
+#resetbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.altColor {
-    background-color: blueviolet;
+#resetbutton > button {
+    height: 50px;
+    width: 150px;
+    margin: 10px;
+    border: 3px groove rebeccapurple  ;
+    border-radius: 20%;
+    background-color: aliceblue;
+    font-size: 20px;
+
+}
+
+#ghlogo {
+    height: 18px;
 }

@@ -1,27 +1,13 @@
 // JavaScript
 
-// Task 1 done. Function declaration.
-// Changed code during Task 2. Wasn't giving a random number anymore.
+// Random choice generator
 
 const myArray = ['Rock', 'Paper', 'Scissors'];
-
-
 
 function computerPlay() {
     return myArray[Math.floor(Math.random() * myArray.length)];
 
 }
-
-// Function expression attempt.
-// Code does not work. 'Return not in function'.
-// Removing return, it still won't give a random value.
-// No errors in VSCode
-
-// const myArray = ['Rock', 'Paper', 'Scissors'];
-// let computerPlay = myArray[Math.floor(Math.random()* myArray.length)]; {
-//     return computerPlay;
-// }
-
 
 // Game buttons
 
@@ -32,7 +18,7 @@ const scissorsBtn = document.querySelector('#scissors')
 rockBtn.addEventListener('click', choseRock)
 function choseRock() {
     // console.log(playRound('rock'))
-    results.innerHTML = `<li> ${playRound('rock')}</li>`; // += removed so it only shows one result
+    results.innerHTML = `<li> ${playRound('rock')}</li>`; // += removed so it only shows the latest result
     resultsContainer.appendChild(results)
     score.textContent = `Player score: ${playerWins} Computer score: ${computerWins}`
     scoreContainer.appendChild(score)
@@ -67,36 +53,25 @@ function choseScissors() {
 const resultsContainer = document.querySelector('.results')
 const results = document.createElement('ul')
 results.classList.add('theresults')
-results.setAttribute('style', 'color: red; font-weight: bold; font-size: 20px')
+results.setAttribute('style', 'color: rebeccapurple; font-weight: bold; font-size: 20px; list-style-type: none')
 
-
-// Task 2
-// Lowercase function working
-// Previous 'roundOne' function integrated to 'playerPlay'
-// const computerSelection moved out of global scope into function
-// console.log removed
-// playerPlay renamed to playRound
+// Create the score
 
 let computerWins = 0;
 let playerWins = 0;
 
-// Create the score
-
 const scoreContainer = document.querySelector('.scoreboard')
 const score = document.createElement('p')
 score.classList.add('score')
-score.setAttribute('style', 'color: blue; font-weight: bold; font-size: 20px')
+score.setAttribute('style', 'color: rebeccapurple; font-weight: bold; font-size: 20px')
 
-
+// Conditional statements
 
 function playRound(playerSelection) {
-    //console.log(score)
-    // let roundWinner = score++;
     let computerSelection = computerPlay();
     let tieGame = '';
     // playerSelection = prompt('Rock, Paper, or Scissors?').toLocaleLowerCase();
     
-
     if (playerSelection === 'rock' && computerSelection === 'Paper') {
         return ('Paper beats Rock. Computer wins! Score + ' + (++computerWins));
     } else if (playerSelection === 'rock' && computerSelection === 'Scissors') {
@@ -127,40 +102,44 @@ function playRound(playerSelection) {
 
 const declareWinner = () => {
     if (playerWins === 5) {
+        results.classList.remove('theresults')
+        results.classList.add('winner')
+        results.setAttribute('style', 'font-weight: bold; font-size: 48px; list-style-type: none')
         results.textContent = 'Player wins the game!'
-        rockBtn.setAttribute('style', 'background-color: red; text: NULL')
-        rockBtn.removeEventListener('click', choseRock)
-        paperBtn.setAttribute('style', 'background-color: red; text: NULL')
-        paperBtn.removeEventListener('click', chosePaper)
-        scissorsBtn.setAttribute('style', 'background-color: red; text: NULL')
-        scissorsBtn.removeEventListener('click', choseScissors)
         playerWins = 0;
         computerWins = 0;
+        rockBtn.setAttribute('style', 'background-color: red')
+        rockBtn.removeEventListener('click', choseRock)
+        paperBtn.setAttribute('style', 'background-color: red')
+        paperBtn.removeEventListener('click', chosePaper)
+        scissorsBtn.setAttribute('style', 'background-color: red')
+        scissorsBtn.removeEventListener('click', choseScissors)
         resetBtn.appendChild(playAgain)
     }   else if (computerWins === 5) {
+        results.classList.remove('theresults')
+        results.classList.add('winner')
+        results.setAttribute('style', 'font-weight: bold; font-size: 48px; list-style-type: none')
         results.textContent = 'Computer wins the game!'
         playerWins = 0;
         computerWins = 0;
-        rockBtn.setAttribute('style', 'background-color: red; text: NULL')
+        rockBtn.setAttribute('style', 'background-color: red')
         rockBtn.removeEventListener('click', choseRock)
-        paperBtn.setAttribute('style', 'background-color: red; text: NULL')
+        paperBtn.setAttribute('style', 'background-color: red')
         paperBtn.removeEventListener('click', chosePaper)
-        scissorsBtn.setAttribute('style', 'background-color: red; text: NULL')
+        scissorsBtn.setAttribute('style', 'background-color: red')
         scissorsBtn.removeEventListener('click', choseScissors)
         resetBtn.appendChild(playAgain)
 
-        
     }   
 }
 
-// Play Again button
-
-const playAgain= document.createElement('button')
-playAgain.textContent = 'Play again?'
-
+// Reset game / Play again?
 
 const resetBtn = document.querySelector('#resetbutton')
 resetBtn.addEventListener('click', resetGame)
+
+const playAgain= document.createElement('button')
+playAgain.textContent = 'Play again?'
 
 function resetGame() {
     rockBtn.addEventListener('click', choseRock)
@@ -171,95 +150,18 @@ function resetGame() {
     scissorsBtn.removeAttribute('style')
     score.textContent = ''
     results.textContent = ''
+    results.classList.remove('winner')
+    results.setAttribute('style', 'color: rebeccapurple; font-weight: bold; font-size: 20px; list-style-type: none')
     resetBtn.removeChild(playAgain)
 }
 
-
-
-// Play 5 rounds of RPS
+// Leftover Code
+// Plays 5 rounds when playerSelection === 'rock'
 
 // function game() {
 //     for (let i = 0; i < 5; i++) {
 //       console.log(playRound('rock'))
-      
-//     } 
-    
+//     }  
 // }
 
 // game()
-
-// game()
-
-// else if (playerWins >=5  || computerWins >= 5)
-//         results.textContent = '',
-//         playerWins = 0,
-//         computerWins = 0
-
-
-// Calculate and log score
-
-// const alertWinner = document.createElement('p')
-// alertWinner.textContent = 'You win the game'
-
-// let score = 0;
-// function reportWinner(){ 
-//     if (score ===5) {
-//         resultsContainer.appendChild(alertWinner)
-//     }
-// }
-// reportWinner()
-
-
-
-// Task 3
-// Score is added up, but the winner is not defined.
-
-
-// function game() {
-
-//     console.log(playRound());
-//     console.log(score);
-//     console.log(playRound());
-//     console.log(score);
-//     console.log(playRound());
-//     console.log(score);
-//     console.log(playRound());
-//     console.log(score);
-//     console.log(playRound());
-//     console.log(score);
-
-//     if (score >= 5) {
-//         console.log('You win the game!');
-//     }
-
-// }
-
-// game();
-
-
-// Callback button examples / practice
-
-// const callbackBtn = document.querySelector('.callback')
-
-// // Function declaration / named function
-
-// function colorBtn() {
-//     callbackBtn.classList.toggle('altColor')
-// }
-
-// callbackBtn.addEventListener('click', colorBtn)
-
-// // Anonymous function
-
-// callbackBtn.addEventListener('click', function() {
-//     callbackBtn.classList.toggle('altColor')
-// })
-
-// // Arrow function
-
-// callbackBtn.addEventListener('click', () => {
-//     callbackBtn.classList.toggle('altColor')
-// })
-
-// function practice
-
